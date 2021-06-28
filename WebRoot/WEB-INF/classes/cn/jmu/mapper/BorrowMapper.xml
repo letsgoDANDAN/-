@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.BorrowMapper">
+	<insert id="addBorrow" parameterType="cn.jmu.po.Borrow">
+		insert into borrow(bookID,borrowingtime,renewstatus,returnstatus,returntime,time,userid) value (#{bookID},#{borrowingtime},#{renewstatus},#{returnstatus},#{returntime},#{time},#{userid})
+	</insert>
+	
+	<update id="updateBorrow" parameterType="cn.jmu.po.Borrow">
+		update borrow set renewstatus=#{renewstatus}, returntime=#{returntime}, borrowingtime=#{borrowingtime}, time=#{time} where bookID=#{bookID} and userid=#{userid} and returnstatus=0;
+	</update>
+	
+	<select id="findAll" resultType="cn.jmu.po.Borrow">
+		select * from borrow
+	</select>
+	
+	<select id="findByUserid" parameterType="String" resultType="cn.jmu.po.Borrow">
+	    select * from borrow where userid=#{userid}
+	</select>
+	<select id="findOne" parameterType="String" resultType="cn.jmu.po.Borrow">
+	    select * from borrow where userid=#{userid} and bookID=#{bookID}
+	</select>
+	<select id="findByBookID" parameterType="String" resultType="cn.jmu.po.Borrow">
+		select * from borrow where bookID=#{bookID}
+	</select>
+	<update id="Return" parameterType="cn.jmu.po.Borrow">
+		update borrow set renewstatus=#{renewstatus}, returntime=#{returntime}, borrowingtime=#{borrowingtime}, time=#{time} ,returnstatus=#{returnstatus} where bookID=#{bookID} and userid=#{userid} and returnstatus=0;
+	</update>
+</mapper>

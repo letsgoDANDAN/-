@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.BookTypeMapper">
+	<select id="getByID" parameterType="String" resultType="cn.jmu.po.BookType">
+		select * from booktype where sonID=#{sonID}
+	</select>
+	
+	<select id="getSon" parameterType="String" resultType="cn.jmu.po.BookType">
+	   select * from booktype where fatherID=#{fatherID}
+	</select>
+	<select id="findall" resultType="cn.jmu.po.BookType">
+	  select * from booktype
+	</select>
+</mapper>

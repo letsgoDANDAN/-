@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.AuthorMapper">
+    
+    <select id="getAuthorName" parameterType="String" resultType="String">
+     select authorname from author where authorID=#{authorID}
+    </select>
+    
+    <insert id="addAuthor" parameterType="cn.jmu.po.Author">
+    insert author into author values(#{authorID},#{authorname})
+    </insert>
+    
+    <select id="findall" resultType="cn.jmu.po.Author">
+    select * from author
+    </select>
+</mapper>

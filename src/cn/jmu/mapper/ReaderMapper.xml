@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.ReaderMapper">
+
+   <insert id="addReader" parameterType="cn.jmu.po.Reader">
+       insert into reader values(#{userid},#{unitID},#{readertypeID},#{password},#{role},#{name},#{Email},#{phone},#{borrowstatus},#{fbooknumber},#{cbooknumber},#{booknumber})
+    </insert>
+
+    <delete id="deleteReader" parameterType="String">
+        delete from reader where readername=#{name}
+    </delete>
+    
+	<select id="findAll" resultType="cn.jmu.po.Reader">
+		select * from reader
+	</select>
+	
+	<select id="findByName" resultType="cn.jmu.po.Reader">
+	    select * from reader where name=#{name}
+	</select>
+	<update id="updateReader" parameterType="cn.jmu.po.Reader">
+		update reader set unitID=#{unitID},readertypeID=#{readertypeID},password=#{password},Email=#{Email},phone=#{phone},borrowstatus=#{borrowstatus},fbooknumber=#{fbooknumber},cbooknumber=#{cbooknumber},booknumber=#{booknumber} where name=#{name}
+	</update>
+	
+	<select id="checkReader" parameterType="int">
+		select borrowstatus from reader where readername=#{name}
+	</select>
+	<select id="findByUserID" parameterType="String" resultType="cn.jmu.po.Reader">
+		select * from reader where userID=#{userID}
+	</select>
+</mapper>

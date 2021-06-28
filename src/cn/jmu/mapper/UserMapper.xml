@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.UserMapper">
+
+   <insert id="addUser" parameterType="cn.jmu.po.User">
+       insert into user values(#{userid},#{password},#{role},#{name},#{Email},#{phone})
+    </insert>
+
+    <delete id="deleteUser" parameterType="String">
+        delete from user where readername=#{name}
+    </delete>
+    <update id="updateUser" parameterType="cn.jmu.po.User">
+	    update user set password=#{password},Email=#{Email},phone=#{phone} where name=#{name}
+	</update>
+	
+	<select id="login" parameterType="String" resultType="String">
+       	select name from user where userid=#{userid} and password=#{password}
+	</select>
+</mapper>

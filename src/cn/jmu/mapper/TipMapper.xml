@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.TipMapper">
+    
+    <select id="getBookNumber" parameterType="int" resultType="String">
+     select booknumber from tip where branchId=#{branchId} and ISBN=#{ISBN}
+    </select>  
+    
+    <insert id="addTip" parameterType="cn.jmu.po.Tip">
+    insert into tip values(#{branchID},#{ISBN},#{booknumber})
+    </insert>
+    
+    <update id="updateTip" parameterType="cn.jmu.po.Tip">
+    update tip set booknumber=#{booknumber} where branchID=#{branchID} and ISBN=#{ISBN}
+    </update>
+</mapper>

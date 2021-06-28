@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.BorrowConditionsMapper">
+    
+    <select id="selectAll" resultType="cn.jmu.po.BorrowConditions">
+     select * from borrowconditions
+    </select>
+    
+    <select id="selectByType" parameterType="String" resultType="cn.jmu.po.BorrowConditions">
+    select * from borrowconditions where readertypeID=#{readertypeID} and borrowtypeID=#{borrowtypeID}
+    </select>
+    
+    <update id="updateBorrowConditions" parameterType="cn.jmu.po.BorrowConditions">
+    update borrowconditions set borrownum=#{borrownum},borrowtime=#{borrowtime},renewtime=#{renewtime} where readertypeID=#{readertypeID} and borrowtypeID=#{borrowtypeID}
+    </update>
+</mapper>

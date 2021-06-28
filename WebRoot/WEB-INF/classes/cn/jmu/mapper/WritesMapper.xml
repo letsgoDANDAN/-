@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.WritesMapper">
+    
+    <select id="getAuthorID" parameterType="String" resultType="String">
+     select authorID from writes where ISBN=#{ISBN}
+    </select>
+    
+    <insert id="addWrite" parameterType="cn.jmu.po.Writes">
+    insert into writes values(#{ISBN},#{authorID})
+    </insert>
+    
+    <delete id="deleteWrite" parameterType="String">
+    delete from writes where ISBN=#{ISBN}
+    </delete>
+</mapper>

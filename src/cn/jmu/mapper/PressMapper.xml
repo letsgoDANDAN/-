@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.PressMapper">
+    
+    <select id="getPressName" parameterType="String" resultType="String">
+     select publicname from press where publicID=#{publicID}
+    </select>
+    
+    <insert id="addPress" parameterType="cn.jmu.po.Press">
+    insert into press values(#{publicID},#{publicname})
+    </insert>
+    
+    <select id="findall" resultType="cn.jmu.po.Press">
+    select * from press
+    </select>
+</mapper>

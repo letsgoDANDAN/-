@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jmu.mapper.TicketMapper">
+
+<insert id="addTicket" parameterType="cn.jmu.po.Ticket">
+   insert into ticket values(#{fineid},#{finetypeID},#{userid},#{totalfineprice},#{finedetail})
+</insert>
+  
+ <delete id="deleteTicket" parameterType="String">
+   delete from ticket where fineid=#{fineid}
+ </delete>
+ 
+ <update id="updateTicket" parameterType="cn.jmu.po.Ticket">
+   update ticket set finetypeID=#{finetypeID},totalfineprice=#{totalfineprice},finedetail=#{finedetail},settlestatus=#{settlestatus} where fineid=#{fineid}
+ </update>
+ 
+ <select id="findByUseid" parameterType="String" resultType="cn.jmu.po.Ticket">
+  select * from ticket where userid=#{userid}
+ </select>
+ 
+ <select id="findAll" resultType="cn.jmu.po.Ticket">
+  select * from ticket
+ </select>
+ 
+ <select id="findById" parameterType="String" resultType="cn.jmu.po.Ticket">
+  select * from ticket where fineid=#{fineid}
+ </select>
+ 
+</mapper>
